@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MainLayout from "../layout/MainLayout";
-import { Plus, Folder, Loader2, } from "lucide-react";
+import { Plus, Folder, Loader2 } from "lucide-react";
 import { useProjectStore } from "../store/project.store";
 import FeaturedCard from "../components/card/Featured_card";
 import ProjectModal from "../components/modal/ProjectModal";
@@ -18,14 +18,22 @@ const Projects = () => {
     fetchProjects();
   }, [fetchProjects]);
 
-  const handleCreateProject = async (data: CreateProjectDTO) => {
+  const handleCreateProject = async (
+    data: CreateProjectDTO,
+  ): Promise<{ success: boolean }> => {
     setIsSubmitting(true);
     try {
-      await createProject(data);
-      await fetchProjects();
-      setIsModalOpen(false);
+      const res = await createProject(data);
+
+      if (res.success) {
+        await fetchProjects();
+        setIsModalOpen(false);
+      }
+
+      return { success: res.success };
     } catch (error) {
       console.error("Failed to create project:", error);
+      return { success: false };
     } finally {
       setIsSubmitting(false);
     }

@@ -1,7 +1,6 @@
 import React from "react";
 import { useAuthStore } from "../store/auth.store";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { Loader2 } from "lucide-react";
 import { FancyLoader } from "../loader/Loader1";
 
 type ProtectedProps = {

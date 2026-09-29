@@ -18,7 +18,7 @@ interface ResponseData<T = unknown> {
 
 interface ProjectActions {
   fetchProjects: () => Promise<void>;
-  createProject: (data: CreateProjectDTO) => Promise<void>;
+  createProject: (data: CreateProjectDTO) => Promise<ResponseData<ProjectDTO>>;
   getProjectBySlug: (slug: string) => ProjectDTO | null;
   updateProject: (
     id: string,
@@ -64,7 +64,7 @@ export const useProjectStore = create<ProjectState & ProjectActions>(
 
     createProject: async (data: CreateProjectDTO) => {
       set({ loading: true, error: null });
-
+      const response: ResponseData<ProjectDTO> = { success: false };
       await handleRequest({
         request: () =>
           api.post("/projects", data, {
@@ -74,6 +74,9 @@ export const useProjectStore = create<ProjectState & ProjectActions>(
           }),
 
         onSuccess: (data) => {
+          response.success = true;
+          response.data = data.data as ProjectDTO;
+          response.message = "Project created successfully";
           set({
             projects: [...get().projects, data.data as ProjectDTO],
             loading: false,
@@ -82,6 +85,10 @@ export const useProjectStore = create<ProjectState & ProjectActions>(
         },
 
         onError: (error) => {
+          response.success = false;
+          response.message =
+            error.response?.data?.message || "Failed to create project";
+          response.data = undefined;
           set({
             loading: false,
             error: error.message,
@@ -90,6 +97,7 @@ export const useProjectStore = create<ProjectState & ProjectActions>(
 
         showToast: false,
       });
+      return response;
     },
 
     getProjectBySlug: (slug: string) => {

@@ -128,7 +128,7 @@ export const useAuthStore = create<AuthState & AuthActions>((set, get) => ({
           isAuthenticated: true,
         });
       },
-      onError: (error) => {
+      onError: () => {
         get().reset(); // Clear state if token verification fails
       },
       showToast: false,

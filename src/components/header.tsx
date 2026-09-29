@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSidebar } from '../context/SidebarContext';
 import { Menu, X, Search, Bell } from 'lucide-react';
 import ThemeToggle from '../util/ThemeToggle';

@@ -1,7 +1,7 @@
-import { jwtSignReturnType } from "./session.interface.js";
-import { UserDTO } from "./user.dto.js";
 
-export interface AuthenticationDTO extends jwtSignReturnType {
+import type { UserDTO } from "./user.dto";
+
+export interface AuthenticationDTO  {
   user:UserDTO;
 }
 export interface recoverDTO {

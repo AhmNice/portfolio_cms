@@ -20,7 +20,7 @@ interface uploadResult {
   success: boolean;
   url: string;
 }
-export const useUploadStore = create<UploadActions>((set) => ({
+export const useUploadStore = create<UploadActions>(() => ({
   getSignature: async (data: CloudinaryUploadOptions) => {
     return new Promise<CloudinaryUploadSignature>((resolve, reject) => {
       handleRequest({

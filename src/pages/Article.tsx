@@ -1,7 +1,7 @@
 import Search from "../components/Search";
 import { SearchProvider, useSearch } from "../context/searchContext";
 import MainLayout from "../layout/MainLayout";
-import { Plus, Calendar, Eye, Edit, Trash2 } from "lucide-react";
+import { Plus, Calendar, Eye } from "lucide-react";
 import { useArticleStore } from "../store/article.store";
 import { useEffect, useState } from "react";
 import type { ArticleDTO, CreateArticleDTO } from "../interface/article.dto";
@@ -9,7 +9,7 @@ import AddArticleModal from "../components/modal/ArticleModal";
 import { useNavigate } from "react-router-dom";
 
 const ArticleContent = ({ loading }: { loading: boolean }) => {
-  const { data, searchResults, setData, setSearchResults } =
+  const { data, searchResults, setSearchResults } =
     useSearch<ArticleDTO>();
   const category = data.map((article) => article.category).filter(Boolean);
   const status = data.map((article) => article.status).filter(Boolean);
@@ -186,6 +186,7 @@ const ArticleContent = ({ loading }: { loading: boolean }) => {
         </div>
         <AddArticleModal
           open={isModalOpen}
+          initialData={null}
           onClose={() => setIsModalOpen(false)}
           onSubmit={handleCreateArticle}
           isSubmitting={isSubmitting}
@@ -199,7 +200,7 @@ const Article = () => {
   const articles = useArticleStore((state) => state.articles);
   const fetchArticles = useArticleStore((state) => state.fetchArticles);
   const loading = useArticleStore((state) => state.loading);
-  const error = useArticleStore((state) => state.error);
+
 
   useEffect(() => {
     fetchArticles();

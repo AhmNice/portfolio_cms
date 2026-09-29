@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSearch } from '../context/searchContext';
 
-interface SearchProps<T> {
+interface SearchProps {
   onSearch?: (query: string, category?: string, status?: string) => void;
   categories?: string[];
   statuses?: string[];
@@ -15,7 +15,7 @@ const Search = <T extends Record<string, any>>({
   statuses = [],
   placeholder = "Search...",
   searchFields = ['name', 'title', 'description'],
-}: SearchProps<T>) => {
+}: SearchProps) => {
   const {
     searchQuery,
     setSearchQuery,
@@ -42,7 +42,7 @@ const Search = <T extends Record<string, any>>({
         let matchesStatus = true;
 
         if (query) {
-          matchesQuery = searchFields.some((field) => {
+          matchesQuery = searchFields.some((field: any) => {
             const value = item[field];
             return value && value.toString().toLowerCase().includes(query.toLowerCase());
           });
