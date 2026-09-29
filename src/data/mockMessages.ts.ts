@@ -1,0 +1,68 @@
+// src/data/mockMessages.ts
+import type { MessageDTO } from "../interface/messages.dto";
+
+export const mockMessages: MessageDTO[] = [
+  {
+    id: "1",
+    name: "Sarah Johnson",
+    email: "sarah.johnson@example.com",
+    subject: "Project Collaboration Inquiry",
+    message: "Hi, I came across your portfolio and I'm really impressed with your work. I'd love to discuss a potential collaboration on a new SaaS product we're building. Would you be available for a call sometime next week?",
+    status: "UNREAD",
+    createdAt: new Date("2024-01-15T10:30:00"),
+  },
+  {
+    id: "2",
+    name: "Michael Chen",
+    email: "m.chen@techcorp.io",
+    subject: "Job Opportunity - Senior Developer",
+    message: "Hello, we're currently hiring for a Senior Full Stack Developer position at TechCorp. Your experience with React and Node.js aligns perfectly with what we're looking for. Let me know if you'd be interested in learning more.",
+    status: "READ",
+    createdAt: new Date("2024-01-14T15:45:00"),
+  },
+  {
+    id: "3",
+    name: "Emma Williams",
+    email: "emma@designstudio.co",
+    subject: "Feedback on your latest article",
+    message: "I just read your article on performance optimization and found it incredibly helpful. The section about code splitting was particularly insightful. Thanks for sharing your knowledge!",
+    status: "REPLIED",
+    createdAt: new Date("2024-01-13T09:15:00"),
+  },
+  {
+    id: "4",
+    name: "David Martinez",
+    email: "david.martinez@gmail.com",
+    subject: "Bug Report on Portfolio Site",
+    message: "Hey, I noticed a small issue on your portfolio website. The contact form doesn't seem to validate email addresses properly. Just wanted to let you know!",
+    status: "UNREAD",
+    createdAt: new Date("2024-01-12T18:20:00"),
+  },
+  {
+    id: "5",
+    name: "Lisa Anderson",
+    email: "lisa.anderson@startup.com",
+    subject: "Speaking Opportunity at TechConf 2024",
+    message: "We'd love to have you speak at TechConf 2024 about your experience with modern web development. The conference will be held in San Francisco this April. Please let me know if you're interested.",
+    status: "ARCHIVED",
+    createdAt: new Date("2024-01-11T11:00:00"),
+  },
+  {
+    id: "6",
+    name: "James Wilson",
+    email: "j.wilson@agency.net",
+    subject: "Website Redesign Proposal",
+    message: "Our agency is looking for a developer to help redesign our client's e-commerce platform. Based on your portfolio, I think you'd be a great fit. Can we schedule a discovery call?",
+    status: "UNREAD",
+    createdAt: new Date("2024-01-10T14:30:00"),
+  },
+  {
+    id: "7",
+    name: "Olivia Brown",
+    email: "olivia.brown@university.edu",
+    subject: "Mentorship Request",
+    message: "I'm a computer science student graduating this year and I really admire your career path. Would you be open to mentoring me or providing some career advice?",
+    status: "READ",
+    createdAt: new Date("2024-01-09T08:45:00"),
+  },
+];
