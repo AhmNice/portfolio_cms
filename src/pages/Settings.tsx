@@ -88,7 +88,7 @@ const Settings = () => {
     <MainLayout>
       <div className="space-y-6 pb-10">
         <section className="relative overflow-hidden rounded-2xl border border-outline-variant/20 bg-surface-container-low px-5 py-7 sm:px-8">
-          <div className="pointer-events-none absolute -right-10 -top-20 h-48 w-48 rounded-full border-[24px] border-primary/10" />
+          <div className="pointer-events-none absolute -right-10 -top-20 h-48 w-48 rounded-full border-24 border-primary/10" />
           <div className="relative max-w-2xl">
             <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
               <Palette size={13} />
